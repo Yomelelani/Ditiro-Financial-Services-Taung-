@@ -1,0 +1,25 @@
+enable
+configure terminal
+ip routing
+
+vlan 10
+name ADMINISTRATION
+exit
+vlan 20
+name FINANCE
+exit
+vlan 30
+name HR
+exit
+vlan 40
+name IT
+exit
+vlan 50
+name GUEST
+exit
+vlan 60
+name SERVER
+exit
+vlan 70
+name MANAGEMENT
+exit

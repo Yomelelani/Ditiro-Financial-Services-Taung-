@@ -1,0 +1,7 @@
+enable
+configure terminal
+interface fa0/1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,50,60,70
+no shutdown
+exit

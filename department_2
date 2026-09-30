@@ -5,3 +5,24 @@ switchport mode trunk
 switchport trunk allowed vlan 10,20,30,40,50,60,70
 no shutdown
 exit
+vlan 10
+name ADMINISTRATION
+exit
+vlan 20
+name FINANCE
+exit
+vlan 30
+name HR
+exit
+vlan 40
+name IT
+exit
+vlan 50
+name GUEST
+exit
+vlan 60
+name SERVER
+exit
+vlan 70
+name MANAGEMENT
+exit

@@ -41,6 +41,57 @@ interface vlan 40
  no shutdown
 exit
 interface vlan 50
+VLAN 60 - Server
+!
+interface Vlan60
+ ip address 192.168.15.161 255.255.255.224
+ ip access-group SERVER_PROTECTION out
+ no shutdown
+exit
+
+!
+! VLAN 70 - Management
+!
+interface Vlan70
+ ip address 192.168.15.193 255.255.255.224
+ no shutdown
+exit
+
+!
+! Default route toward Router
+!
+ip route 0.0.0.0 0.0.0.0 192.168.15.226
+
+!
+! Guest Security ACL
+!
+ip access-list extended GUEST_RESTRICTION
+ deny ip 192.168.15.128 0.0.0.31 192.168.15.0 0.0.0.255
+ permit ip any any
+exit
+
+
+Server Protection ACL
+
+ip access-list extended SERVER_PROTECTION
+ permit ip 192.168.15.0 0.0.0.31 host 192.168.15.162
+ permit ip 192.168.15.32 0.0.0.31 host 192.168.15.162
+ permit ip 192.168.15.64 0.0.0.31 host 192.168.15.162
+ permit ip 192.168.15.96 0.0.0.31 host 192.168.15.162
+ deny ip any host 192.168.15.162
+ permit ip any any
+exit
+
+
+ STP
+
+spanning-tree mode pvst
+
+
+ Save configuration
+
+end
+copy running-config startup-config
  ip address 192.168.15.129 255.255.255.224
  no shutdown
 exit
@@ -69,3 +120,14 @@ switchport mode trunk
 switchport trunk allowed vlan 10,20,30,40,50,60,70
 no shutdown
 exit
+ip routing
+Verification commands for the Core:
+show vlan brief
+show interfaces status
+show interfaces trunk
+show ip interface brief
+show ip route
+show ip access-lists
+show spanning-tree
+show cdp neighbors
+show running-config

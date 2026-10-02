@@ -1,0 +1,10 @@
+Verification commands used on the 2960s
+show vlan brief
+show interfaces status
+show interfaces trunk
+show ip interface brief
+show spanning-tree
+show cdp neighbors
+show ip ssh
+show running-config
+show mac address-table dynamic
